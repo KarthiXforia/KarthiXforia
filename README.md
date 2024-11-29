@@ -17,6 +17,4 @@ Databases: MongoDB | PostgreSQL | Firebase
 Tools & Platforms: Git | Docker | AWS | CI/CD
 Other Cool Skills: State Management (Redux, Zustand) | Maps API Integration | Beacon Technology
 
-## Dynamic Commit Grid
-The grid below updates daily to reflect random commit intensities:
-<iframe src="commit_grid.html" width="720" height="200"></iframe>
+
