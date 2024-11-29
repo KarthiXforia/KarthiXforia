@@ -1,0 +1,37 @@
+name: Update Commit Grid
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Run every day at midnight UTC
+
+jobs:
+  generate-grid:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      # Step 3: Install dependencies (if required)
+      - name: Install Dependencies
+        run: pip install -r requirements.txt || echo "No dependencies"
+
+      # Step 4: Run the script to generate the grid
+      - name: Generate Commit Grid
+        run: python generate_grid.py
+
+      # Step 5: Commit and push changes
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add commit_grid.html
+          git commit -m "Update commit grid animation"
+          git push
